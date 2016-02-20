@@ -676,11 +676,4 @@ object Form1: TForm1
       OnClick = N9Click
     end
   end
-  object Timer1: TTimer
-    Enabled = False
-    Interval = 4000
-    OnTimer = Timer1Timer
-    Left = 81
-    Top = 208
-  end
 end

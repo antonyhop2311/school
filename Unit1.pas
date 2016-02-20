@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, REGISTRY, ShellApi,
   Vcl.Menus, Vcl.ExtDlgs, Vcl.CheckLst, Vcl.OleCtrls, SHDocVw, mshtml,
-  Vcl.ComCtrls, Unit3;
+  Vcl.ComCtrls, IdHTTP;
 
 type
   TForm1 = class(TForm)
@@ -27,7 +27,6 @@ type
     N8: TMenuItem;
     N9: TMenuItem;
     Memo1: TMemo;
-    Timer1: TTimer;
     Panel5: TPanel;
     Button1: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -45,7 +44,6 @@ type
     { Private declarations }
   public
     { Public declarations }
-    MyThreadUserInfoVK:ThreadUserInfoVK;
   end;
 const
    verVK='5.45';
@@ -104,6 +102,10 @@ Var
   html_tag:Variant;
   stemp, ss:String;
   Documents: IHTMLDocument2;
+  data:TStringList;
+  PageProfile: String;
+  IdHTTP1: TIdHTTP;
+  fr:TextFile;
 begin
  stemp:=WebBrowser1.OleObject.Document.body.innerHTML;
  if (Pos('Для продолжения Вам необходимо войти ', stemp)>0)or(pos('Телефон или email',stemp)>0) then begin
@@ -142,12 +144,27 @@ begin
      ProgressBar1.Max:=100;
      ProgressBar1.Position:=0;
      try
-       MyThreadUserInfoVK:=ThreadUserInfoVK.Create(false,IntToStr(ppi),sToken,Edit1.Text,Proxy,sListUserID);
-       MyThreadUserInfoVK.Priority:=tpNormal;
-       MyThreadUserInfoVK.FreeOnTerminate:=true;
-       MyThreadUserInfoVK.Resume;
-       inc(ppi);
-       Memo1.Lines.Add('Запущен '+ppi.ToString+' поток.');
+
+
+       AssignFile(fr,sPathDocTemp+'users\all_in.txt');
+       Rewrite(fr);
+       PageProfile:='';
+       data:=TStringList.Create;
+       data.Clear;
+        data.Add('q=мария осокина');
+        data.Add('fields=uid,first_name,last_name,nickname,photos,screen_name');
+        data.Add('count=100');
+        data.Add('city=8');
+        data.Add('access_token='+sToken);
+        PageProfile:=IdHTTP1.post('https://api.vk.com/method/users.search',data);
+        data.Destroy;
+       WriteLN(fr,PageProfile);
+       CloseFile(fr);
+
+       Button1.Caption:='Запустить';
+       ProgressBar1.Position:=0;
+
+
      except
      end;
 
@@ -202,10 +219,6 @@ begin
   End Else Begin
     Button1.Caption:='Запустить';
     ProgressBar1.Position:=0;
-    try
-      MyThreadUserInfoVK.Terminate;
-    except
-    end;
   End;//else if Button1.
 end;
 
