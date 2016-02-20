@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.808,=C:\Users\sima02\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.183,D:\!work\Programming\delphi xe8\!freeLance\proba_FreeLance\vk\add group send mess\v2\Unit1.dfm=C:\Users\sima02\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.058,=D:\!work\Programming\delphi xe8\!freeLance\proba_FreeLance\vk\add group send mess\v2\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.469,=C:\Users\sima02\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.194,=D:\!work\Programming\delphi xe8\!freeLance\proba_FreeLance\vk\add group send mess\v2\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.183,D:\!work\Programming\delphi xe8\!freeLance\proba_FreeLance\vk\add group send mess\v2\Unit1.pas=C:\Users\sima02\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.529,D:\!work\Programming\delphi xe8\!freeLance\proba_FreeLance\vk\add group send mess\v2\Project1.dproj=C:\Users\sima02\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
